@@ -60,7 +60,7 @@ public class Node {
 
 	public Node selectNextRandomCandidate() {
 		Node newCandidate = new Node(this.state);
-		newCandidate.state[(int) Math.random() * 8].move();
+		newCandidate.state[(int) (Math.random() * N)].setRow((int) (Math.random() * N));
 		return newCandidate;
 	}
 

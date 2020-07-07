@@ -6,10 +6,13 @@ public class Test {
 		Node node = new Node();
 		node.generateBoard();
 
-		HillClimbing hill = new HillClimbing();
+//		HillClimbing hill = new HillClimbing();
+//
+//		Node rs = hill.executeHillClimbingWithRandomRestart(node);
 
-		Node rs = hill.executeHillClimbingWithRandomRestart(node);
-		
+		SA_NQueens sa = new SA_NQueens();
+		Node rs = sa.execute(node);
+
 		rs.displayBoard();
 		System.out.println(rs.getH());
 	}

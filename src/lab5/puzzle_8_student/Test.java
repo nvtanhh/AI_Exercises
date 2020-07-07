@@ -19,8 +19,8 @@ public class Test {
 //		GreedyBestFirstPuzzle gbf = new GreedyBestFirstPuzzle();
 //		System.out.println(gbf.execute(p));
 //	
-		AStartPuzzle aStart = new AStartPuzzle();
-		System.out.println(aStart.execute(p));
+//		AStartPuzzle aStart = new AStartPuzzle();
+//		System.out.println(aStart.execute(p));
 
 //		DFSPuzzle dfs = new DFSPuzzle();
 //		dfs.execute(p);

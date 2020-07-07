@@ -26,7 +26,7 @@ public class DFSPuzzle implements IPuzzleAlgo {
 				return currentNode;
 			}
 			List<Node> children = model.getSuccessors(currentNode);
-			children.sort(Node.HeuristicComparatorByH2);
+			children.sort(Node.HeuristicComparatorByH1);
 			Collections.reverse(children);
 			
 			for (Node childNode : children) {

@@ -1,24 +1,17 @@
 package lab5.puzzle_8_student;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class HillClimbingPuzzle implements IPuzzleAlgo {
 
 	@Override
 	public Node execute(Puzzle model) {
-		Queue<Node> frontier = new LinkedList<Node>();
-		List<Node> explored = new ArrayList<Node>();
-		frontier.add(model.getInitialState());
 		long startDT = System.currentTimeMillis();
 		int count = 0;
-		while (!frontier.isEmpty()) {
-			Node currentNode = frontier.poll();
+		while (true) {
+			Node currentNode = model.getInitialState();
 			++count;
-			explored.add(currentNode);
 			if (currentNode.getH1() == 0) {
 				System.out.println("****HILL CLIMBING****");
 				System.out.println("Loop: " + count);
@@ -29,13 +22,12 @@ public class HillClimbingPuzzle implements IPuzzleAlgo {
 			List<Node> children = model.getSuccessors(currentNode);
 			children.sort(Node.HeuristicComparatorByH1);
 			Collections.reverse(children);
-			for (Node childNode : children) {
-				if (!frontier.contains(childNode) && !explored.contains(childNode)
-						&& childNode.getH1() <= currentNode.getH1()) {
-					childNode.setG(currentNode.getG() + 1);
-					frontier.add(childNode);
-				}
-			}
+			Node childNode = children.get(0);
+			if (childNode.getH1() <= currentNode.getH1()) {
+				childNode.setG(currentNode.getG() + 1);
+				currentNode = childNode;
+			} else
+				break;
 		}
 		System.out.println("****HILL CLIMBING****");
 		System.out.println("Loop: " + count);
